@@ -61,23 +61,21 @@
         </mxCell>
         <mxCell id="qoYR1P2In5owYic7LhhQ-17" value="" style="endArrow=block;endFill=0;endSize=12;html=1;rounded=0;" parent="1" edge="1">
           <mxGeometry width="160" relative="1" as="geometry">
-            <mxPoint x="204.5" y="400" as="sourcePoint" />
-            <mxPoint x="210" y="150" as="targetPoint" />
+            <mxPoint x="200" y="400" as="sourcePoint" />
+            <mxPoint x="200" y="150" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="qoYR1P2In5owYic7LhhQ-18" value="échange de compétence&lt;div&gt;Allô_aide&amp;nbsp;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="260" width="190" height="30" as="geometry" />
         </mxCell>
         <mxCell id="qoYR1P2In5owYic7LhhQ-19" value="par nom prénom et Mail" style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=25;verticalAlign=top;align=center;" parent="1" vertex="1">
-          <mxGeometry x="460" y="220" width="120" height="60" as="geometry" />
+          <mxGeometry x="720" y="100" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="qoYR1P2In5owYic7LhhQ-20" value="" style="endArrow=none;dashed=1;html=1;rounded=0;entryX=0.137;entryY=0.977;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" target="qoYR1P2In5owYic7LhhQ-19" edge="1" source="qoYR1P2In5owYic7LhhQ-11">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="480" y="400" as="sourcePoint" />
             <mxPoint x="485" y="390" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="580" y="280" />
-            </Array>
+            <Array as="points" />
           </mxGeometry>
         </mxCell>
         <mxCell id="qoYR1P2In5owYic7LhhQ-21" value="voir les créneau d&#39;autre besoin d&#39;aide&amp;nbsp;" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
