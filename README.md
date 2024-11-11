@@ -1,7 +1,7 @@
-Description
+Description:
 Ce projet est une application Web permettant l'échange de compétences entre utilisateurs. Les utilisateurs peuvent proposer leur aide pour des activités spécifiques ou rechercher de l'aide pour des compétences qu'ils ne possèdent pas. L'application est construite avec Django et utilise une base de données SQLite.
 
-Fonctionnalités
+Fonctionnalités:
 Visiteur
 Consulter anonymement les créneaux où des utilisateurs proposent leur aide.
 Accéder à la liste complète des compétences disponibles pour l'échange.
