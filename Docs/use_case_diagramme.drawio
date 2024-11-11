@@ -1,0 +1,94 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36" version="24.7.17">
+  <diagram name="Page-1" id="v0h-x5uJeZunK1t_41cg">
+    <mxGraphModel dx="1028" dy="565" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2339" pageHeight="3300" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="qoYR1P2In5owYic7LhhQ-1" value="" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="260" y="60" width="580" height="580" as="geometry" />
+        </mxCell>
+        <mxCell id="qoYR1P2In5owYic7LhhQ-2" value="Visiteur&amp;nbsp;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="190" y="160" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="qoYR1P2In5owYic7LhhQ-3" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1" target="qoYR1P2In5owYic7LhhQ-4">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="230" y="180" as="sourcePoint" />
+            <mxPoint x="380" y="180" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qoYR1P2In5owYic7LhhQ-4" value="consulte List of compétence&amp;nbsp;" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="400" y="140" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="qoYR1P2In5owYic7LhhQ-5" value="List of créneau libre sans savoir les nom&amp;nbsp;" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="400" y="240" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="qoYR1P2In5owYic7LhhQ-6" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1" source="qoYR1P2In5owYic7LhhQ-2" target="qoYR1P2In5owYic7LhhQ-5">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="570" y="400" as="sourcePoint" />
+            <mxPoint x="620" y="350" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="230" y="180" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qoYR1P2In5owYic7LhhQ-7" value="User1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="190" y="410" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="qoYR1P2In5owYic7LhhQ-9" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1" target="qoYR1P2In5owYic7LhhQ-11">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="230" y="440" as="sourcePoint" />
+            <mxPoint x="310" y="430" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qoYR1P2In5owYic7LhhQ-11" value="Log in&amp;nbsp;" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="610" y="370" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="qoYR1P2In5owYic7LhhQ-12" value="Demande une aide&amp;nbsp;" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="600" y="470" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="qoYR1P2In5owYic7LhhQ-13" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1" target="qoYR1P2In5owYic7LhhQ-12">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="220" y="440" as="sourcePoint" />
+            <mxPoint x="620" y="350" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qoYR1P2In5owYic7LhhQ-14" value="Consulte les autre aide de d&#39;autre utilisateur&amp;nbsp;" style="ellipse;whiteSpace=wrap;html=1;direction=south;" vertex="1" parent="1">
+          <mxGeometry x="520" y="540" width="120" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="qoYR1P2In5owYic7LhhQ-15" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.043;entryY=0.422;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="qoYR1P2In5owYic7LhhQ-14">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="220" y="440" as="sourcePoint" />
+            <mxPoint x="620" y="350" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qoYR1P2In5owYic7LhhQ-17" value="" style="endArrow=block;endFill=0;endSize=12;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="204.5" y="400" as="sourcePoint" />
+            <mxPoint x="204.5" y="250" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qoYR1P2In5owYic7LhhQ-18" value="échange de compétence&lt;div&gt;Allô_aide&amp;nbsp;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="260" y="60" width="190" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="qoYR1P2In5owYic7LhhQ-19" value="par nom prénom et Mail" style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=25;verticalAlign=top;align=center;" vertex="1" parent="1">
+          <mxGeometry x="490" y="320" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="qoYR1P2In5owYic7LhhQ-20" value="" style="endArrow=none;dashed=1;html=1;rounded=0;entryX=0.137;entryY=0.977;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="qoYR1P2In5owYic7LhhQ-19">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="460" y="420" as="sourcePoint" />
+            <mxPoint x="485" y="390" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qoYR1P2In5owYic7LhhQ-21" value="Propser une aide" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="310" y="550" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="qoYR1P2In5owYic7LhhQ-22" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1" target="qoYR1P2In5owYic7LhhQ-21">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="220" y="440" as="sourcePoint" />
+            <mxPoint x="600" y="350" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
