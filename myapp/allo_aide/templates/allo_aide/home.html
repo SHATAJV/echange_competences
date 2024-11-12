@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Allô Aide - Échange de Compétences</title>
+</head>
+<body>
+<header>
+        <h1>ALLô_aide</h1>
+        <nav>
+            <a href="#services">Nos services</a>
+            <a href="#actualites">Nos Actualités</a>
+            <a href="#profiter">Comment je peux profiter?</a>
+            <a href="#login">Connexion</a>
+        </nav>
+    </header>
+
+<main>
+        <section id="services">
+            <h2>Nos services</h2>
+            <p>Découvrez les services proposés par ALLô_aide pour échanger vos compétences.</p>
+            <ul>
+        {% for skill in skills %}
+            <li>{{ skill.name }}</li>
+        {% endfor %}
+            </ul>
+
+        </section>
+
+        <section id="actualites">
+            <h2>Nos Actualités</h2>
+            <p>Les dernières nouvelles et informations sur notre application.</p>
+            <ul>
+        {% for slot in timeslots %}
+            <li>{{ slot.date }} - {{ slot.skill.name }} - Disponible</li>
+        {% endfor %}
+           </ul>
+        </section>
+
+        <section id="profiter">
+            <h2>Comment je peux profiter ?</h2>
+            <p>Apprenez à utiliser l'application et tirez le meilleur parti de nos services.</p>
+        </section>
+
+        <section id="informations">
+            <h3>Plus d'informations</h3>
+            <p>Des informations détaillées sur nos services et comment s'inscrire.</p>
+            <button>Plus d'informations</button>
+        </section>
+    </main>
+
+    <footer>
+         <p>&copy; 2024 Allô Aide - Échange de Compétences</p>
+    </footer>
+</body>
+</html>
