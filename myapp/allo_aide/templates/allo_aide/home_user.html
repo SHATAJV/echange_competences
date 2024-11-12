@@ -4,58 +4,79 @@
     <meta charset="UTF-8">
     <title>ALLô_aide - Tableau de bord</title>
     {% load static %}
-     <link rel="stylesheet" href="{% static 'allo_aide/style.css' %}">
-
+    <link rel="stylesheet" href="{% static 'allo_aide/style.css' %}">
 </head>
 <body>
     <header>
-        <h3>Bienvenue  ({{ user.username }})</h3>
+        <h3>Bienvenue, {{ user.username }}</h3>
         <nav>
             <a href="#activites">Vos Activités</a>
             <a href="#propositions">Vos Propositions d'aide</a>
             <a href="#historique">Votre Historique</a>
             <a href="#demandes">Vos Demandes d'aide</a>
-             <a href="{% url 'allo_aide:logout' %}">Déconnexion</a>
+            <a href="{% url 'allo_aide:logout' %}">Déconnexion</a>
         </nav>
     </header>
 
     <main>
         <section id="activites">
-            <h2>Vos Activités</h2>
-            <p>Liste de vos activités et interactions avec d'autres utilisateurs.</p>
-            <ul>
+    <h2>Vos Activités</h2>
+    <p>Liste de vos activités et interactions avec d'autres utilisateurs.</p>
+    <ul>
         {% for skill in skills %}
-            {% if user.username %}
             <li>{{ skill.name }}</li>
+        {% empty %}
+            <li>Vous n'avez pas encore ajouté de compétences.</li>
         {% endfor %}
-            </ul>
-            <section id="ajouter">
-            <h4>Ajouter une nouvelle activité</h4>
-            <a href="{% url 'allo_aide:create_new_skill' %}">Ajouter une activité</a>
-            </section>
+    </ul>
+         </section>
+        <section id="ajouter">
+                <h4>Ajouter une nouvelle activité</h4>
+                <a href="{% url 'allo_aide:create_new_skill' %}">Ajouter une activité</a>
         </section>
 
-<section id="demandes">
+
+        <section id="demandes">
             <h2>Vos Demandes d'aide</h2>
             <p>Liste des demandes d'aide que vous avez envoyées.</p>
-            <button>Voir statut</button>
+            <ul>
+                {% for request in help_requests %}
+                    <li>{{ request.date }} - {{ request.skill.name }} : {{ request.description }}</li>
+                {% empty %}
+                    <li>Vous n'avez pas encore envoyé de demandes d'aide.</li>
+                {% endfor %}
+            </ul>
+             <h4>Ajouter une nouvelle demande</h4>
+                <a href="{% url 'allo_aide:create_new_demande' %}">Ajouter une demande</a>
         </section>
+
         <section id="propositions">
-            <h2>Vos Propositions d'aide</h2>
-            <p>Liste des propositions d'aide que vous avez faites.</p>
-            <button>Voir statut</button>
-        </section>
+    <h2>Vos Propositions d'aide</h2>
+    <p>Liste des propositions d'aide que vous avez faites.</p>
+    <ul>
+        {% for slot in time_slots %}
+            <li>{{ slot.date }} - {{ slot.skill.name }} -
+                {% if slot.is_available %}
+                    Disponible
+                {% else %}
+                    Indisponible
+                {% endif %}
+            </li>
+        {% empty %}
+            <li>Vous n'avez pas encore ajouté de créneaux de disponibilité.</li>
+        {% endfor %}
+    </ul>
+</section>
 
         <section id="historique">
             <h2>Votre Historique</h2>
             <p>Consultation de l'historique de vos activités passées.</p>
             <button>Voir statut</button>
         </section>
-
     </main>
 
     <footer>
-            <p>&copy; 2024 Allô Aide - Échange de Compétences</p>
+        <p>&copy; 2024 Allô Aide - Échange de Compétences</p>
     </footer>
 </body>
 </html>

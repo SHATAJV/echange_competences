@@ -12,4 +12,4 @@ class SkillForm(forms.ModelForm):
 class TimeSlotForm(forms.ModelForm):
     class Meta:
         model = TimeSlot
-        fields = ['date', 'skill']
+        fields = ['date', 'skill','user']

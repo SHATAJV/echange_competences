@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render, redirect
 
-from .forms import SkillForm
+from .forms import SkillForm, TimeSlotForm
 from .models import Skill, TimeSlot, HelpRequest
 
 
@@ -60,4 +60,14 @@ def dashboard(request):
         'time_slots': time_slots,
     }
 
-    return render(request, 'allo_aide/dashboard.html', context)
+    return render(request, 'allo_aide/home_user.html', context)
+
+def create_new_demande(request):
+    if request.method == "POST":
+        form = TimeSlotForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('allo_aide:home_user')
+    else:
+        form = TimeSlotForm()
+    return render(request, 'allo_aide/create_new_demande.html', {'form': form})
