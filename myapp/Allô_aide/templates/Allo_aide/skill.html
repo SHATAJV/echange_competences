@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Allô_aide</title>
+</head>
+<body>
+    <h1>Liste des Compétences</h1>
+    <ul>
+        {% for skill in skills %}
+            <li>{{ skill.name }}</li>
+        {% endfor %}
+    </ul>
+
+    <h1>Créneaux de Disponibilité</h1>
+    <ul>
+        {% for slot in timeslots %}
+            <li>{{ slot.date }} - {{ slot.skill.name }} - Disponible</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
