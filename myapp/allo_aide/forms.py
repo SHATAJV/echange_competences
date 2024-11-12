@@ -2,10 +2,11 @@ from django import forms
 from .models import Skill, TimeSlot
 
 
+
 class SkillForm(forms.ModelForm):
     class Meta:
         model = Skill
-        fields = ['name']
+        fields = ['name', 'user']
 
 
 class TimeSlotForm(forms.ModelForm):

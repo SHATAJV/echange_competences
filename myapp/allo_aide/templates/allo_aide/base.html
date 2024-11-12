@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ALLô_aide - Tableau de bord</title>
+    {% load static %}
+     <link rel="stylesheet" href="{% static 'allo_aide/style.css' %}">
+
+</head>
+<body>
+    <header>
+        <h3>Bienvenue  ({{ user.username }})</h3>
+        <nav>
+            <a href="#activites">Vos Activités</a>
+            <a href="#propositions">Vos Propositions d'aide</a>
+            <a href="#historique">Votre Historique</a>
+            <a href="#demandes">Vos Demandes d'aide</a>
+             <a href="{% url 'allo_aide:logout' %}">Déconnexion</a>
+        </nav>
+    </header>
+     <footer>
+            <p>&copy; 2024 Allô Aide - Échange de Compétences</p>
+    </footer>
+
+</body>
+</html>

@@ -2,7 +2,9 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render, redirect
-from .models import Skill, TimeSlot
+
+from .forms import SkillForm
+from .models import Skill, TimeSlot, HelpRequest
 
 
 def home(request):
@@ -24,7 +26,7 @@ def login_view(request):
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('allo_aide:home_user')  # Redirige vers la page des utilisateurs connectés
+                return redirect('allo_aide:home_user')
     else:
         form = AuthenticationForm()
 
@@ -33,3 +35,29 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return redirect('allo_aide:home')
+
+
+def create_new_skill(request):
+    if request.method == "POST":
+        form = SkillForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('allo_aide:home_user')
+    else:
+        form = SkillForm()
+    return render(request, 'allo_aide/create_new_skill.html', {'form': form})
+
+@login_required
+def dashboard(request):
+    user = request.user
+    skills = Skill.objects.filter(user=user)
+    help_requests = HelpRequest.objects.filter(user=user)
+    time_slots = TimeSlot.objects.filter(user=user)
+
+    context = {
+        'skills': skills,
+        'help_requests': help_requests,
+        'time_slots': time_slots,
+    }
+
+    return render(request, 'allo_aide/dashboard.html', context)

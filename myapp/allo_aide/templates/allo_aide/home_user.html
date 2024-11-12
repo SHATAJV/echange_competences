@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>ALLô_aide - Tableau de bord</title>
+    {% load static %}
+     <link rel="stylesheet" href="{% static 'allo_aide/style.css' %}">
 
 </head>
 <body>
@@ -21,9 +23,15 @@
         <section id="activites">
             <h2>Vos Activités</h2>
             <p>Liste de vos activités et interactions avec d'autres utilisateurs.</p>
+            <ul>
+        {% for skill in skills %}
+            {% if user.username %}
+            <li>{{ skill.name }}</li>
+        {% endfor %}
+            </ul>
             <section id="ajouter">
-            <h2>Ajouter une nouvelle activité</h2>
-            <button>Ajouter une activité</button>
+            <h4>Ajouter une nouvelle activité</h4>
+            <a href="{% url 'allo_aide:create_new_skill' %}">Ajouter une activité</a>
             </section>
         </section>
 

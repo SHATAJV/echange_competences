@@ -1,0 +1,12 @@
+
+
+{% block title %}Liste des Activitées{% endblock %}
+
+{% block main %}
+<h1>Créer une nouvelle compétences</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">envoyer</button>
+    </form>
+{% endblock %}
