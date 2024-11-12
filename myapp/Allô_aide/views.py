@@ -1,6 +1,10 @@
 
 from django.http import HttpResponse
+from django.shortcuts import render
+
+from myapp.Allô_aide.models import Skill
 
 
-def index(request):
-    return HttpResponse("Hello, world. You're at the polls index.")
+def home(request):
+    skills = Skill.objects.all()
+    return render(request, 'exchange/home.html', {'skills': skills})
