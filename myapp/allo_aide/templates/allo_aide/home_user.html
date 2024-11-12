@@ -7,13 +7,13 @@
 </head>
 <body>
     <header>
-        <h1>Bienvenue, User</h1>
+        <h3>Bienvenue  ({{ user.username }})</h3>
         <nav>
             <a href="#activites">Vos Activités</a>
             <a href="#propositions">Vos Propositions d'aide</a>
             <a href="#historique">Votre Historique</a>
             <a href="#demandes">Vos Demandes d'aide</a>
-            <a href="/logout">Déconnexion</a>
+             <a href="{% url 'allo_aide:logout' %}">Déconnexion</a>
         </nav>
     </header>
 
@@ -44,13 +44,10 @@
             <button>Voir statut</button>
         </section>
 
-
-
-
     </main>
 
     <footer>
-        
+            <p>&copy; 2024 Allô Aide - Échange de Compétences</p>
     </footer>
 </body>
 </html>
