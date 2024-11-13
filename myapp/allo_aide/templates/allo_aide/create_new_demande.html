@@ -9,8 +9,3 @@
         <button type="submit" class="btn btn-primary">envoyer</button>
     </form>
 {% endblock %}
-from django.contrib.auth.models import User
-from your_app_name.models import Skill
-user = User.objects.get(username='ClaireJardin')
-skills = Skill.objects.filter(user=user)
-print(skills)  # Check if any skills are returned

@@ -19,7 +19,7 @@
     </header>
 
     <main>
-        <section id="activites">
+       <section id="activites">
     <h2>Vos Activités</h2>
     <p>Liste de vos activités et interactions avec d'autres utilisateurs.</p>
     <ul>
@@ -29,7 +29,7 @@
             <li>Vous n'avez pas encore ajouté de compétences.</li>
         {% endfor %}
     </ul>
-         </section>
+</section>
         <section id="ajouter">
                 <h4>Ajouter une nouvelle activité</h4>
                 <a href="{% url 'allo_aide:create_new_skill' %}">Ajouter une activité</a>
@@ -42,6 +42,7 @@
             <ul>
                 {% for request in help_requests %}
                     <li>{{ request.date }} - {{ request.skill.name }} : {{ request.description }}</li>
+                    <button>trouver le bon personne</button>
                 {% empty %}
                     <li>Vous n'avez pas encore envoyé de demandes d'aide.</li>
                 {% endfor %}
