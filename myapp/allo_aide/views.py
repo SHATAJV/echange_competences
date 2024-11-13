@@ -187,7 +187,6 @@ def choose_slot(request, slot_id):
 
 @login_required
 def history(request):
-
     user = request.user
     taken_slots = TimeSlot.objects.filter(user=user, is_available=False)
 

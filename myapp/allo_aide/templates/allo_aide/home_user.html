@@ -73,11 +73,14 @@
     <a href="{% url 'allo_aide:create_new_proposition' %}">Ajouter une proposition</a>
 </section>
 
-        <section id="historique">
-            <h2>Votre Historique</h2>
-            <p>Consultation de l'historique de vos activités passées.</p>
-            <button>Voir statut</button>
-        </section>
+       <section id="historique">
+    <h2>Votre Historique</h2>
+    <p>Consultation de l'historique de vos activités passées.</p>
+    <form action="{% url 'allo_aide:history' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Voir statut</button>
+    </form>
+</section>
     </main>
 
     <footer>
