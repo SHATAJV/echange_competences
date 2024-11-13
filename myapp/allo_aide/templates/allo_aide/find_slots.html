@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Rechercher des créneaux pour {{ skill.name }}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'allo_aide/style.css' %}">
+</head>
+<body>
+    <header>
+        <h3>Recherche de créneaux pour {{ skill.name }}</h3>
+    </header>
+
+    <main>
+
+        <section>
+            {% if available_slots %}
+                <h4>Créneaux disponibles pour le {{ date|date:"d/m/Y" }} :</h4>
+                <ul>
+                    {% for slot in available_slots %}
+                        <li>{{ slot.date|date:"d/m/Y" }} - {{ slot.user.username }}</li>
+                    <form action="{% url 'allo_aide:choose_slot' slot.id %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit">Request Slot</button>
+                </form>
+
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>il n' ya accune creaneau libre</p>
+            {% endif %}
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Allô Aide - Échange de Compétences</p>
+    </footer>
+</body>
+</html>

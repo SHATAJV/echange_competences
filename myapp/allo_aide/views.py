@@ -4,15 +4,19 @@ Views for managing user authentication, homepage display, and skill/time slot cr
 This module defines views for user login, logout, homepage rendering, user dashboard,
 and forms to create new skills and requests for time slots.
 """
+import datetime
+
+from django.http import HttpResponse
+from django.utils import timezone
 
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 
-from .forms import SkillForm, TimeSlotForm
+from .forms import SkillForm, TimeSlotForm, HelpRequestForm
 from .models import Skill, TimeSlot, HelpRequest
-
+from django.utils.timezone import make_aware
 
 def home(request):
     """
@@ -27,13 +31,11 @@ def home(request):
     return render(request, 'allo_aide/home.html', {'skills': skills, 'timeslots': timeslots})
 
 
-@login_required
+from django.utils import timezone
+
 def home_user(request):
-    """
-    View to render the user's home page after login. Requires the user to be logged in.
-    """
     user = request.user
-    skills = Skill.objects.filter(user=user)  # Fetch only the logged-in user's skills
+    skills = Skill.objects.filter(user=user)
     help_requests = HelpRequest.objects.filter(user=user)
     time_slots = TimeSlot.objects.filter(user=user)
 
@@ -43,7 +45,6 @@ def home_user(request):
         'time_slots': time_slots,
     }
     return render(request, 'allo_aide/home_user.html', context)
-
 def login_view(request):
     """
     View to handle user login.
@@ -110,10 +111,84 @@ def create_new_request(request):
         - form: Instance of TimeSlotForm for creating a new time slot demand.
     """
     if request.method == "POST":
+        form = HelpRequestForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('allo_aide:home_user')
+    else:
+        form = HelpRequestForm()
+    return render(request, 'allo_aide/create_new_demande.html', {'form': form})
+
+
+def create_new_proposition(request):
+    """
+    View to create a new time slot demand using TimeSlotForm.
+
+    If the request is POST and the form is valid, saves the new time slot and redirects
+    to the home_user page. Otherwise, displays an empty TimeSlotForm.
+
+    Context:
+        - form: Instance of TimeSlotForm for creating a new time slot demand.
+    """
+    if request.method == "POST":
         form = TimeSlotForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('allo_aide:home_user')
     else:
         form = TimeSlotForm()
-    return render(request, 'allo_aide/create_new_demande.html', {'form': form})
+    return render(request, 'allo_aide/create_new_proposition.html', {'form': form})
+
+
+def find_slots(request, skill_id, date):
+    """
+    View to find available time slots for a specific skill on a specific date.
+    """
+    skill = get_object_or_404(Skill, id=skill_id)
+    error_message = None
+
+    try:
+        # Parse the date string from URL
+        date_obj = datetime.datetime.strptime(date, '%Y-%m-%d').date()
+    except ValueError:
+        error_message = 'Invalid date format. Please enter a date in YYYY-MM-DD format.'
+        date_obj = None
+
+    # Filter for available time slots on the specified date
+    if date_obj:
+        available_slots = TimeSlot.objects.filter(skill=skill, date=date_obj, is_available=True)
+    else:
+        available_slots = []
+
+    return render(request, 'allo_aide/find_slots.html', {
+        'available_slots': available_slots,
+        'skill': skill,
+        'date': date_obj,
+        'error_message': error_message,
+    })
+@login_required
+def choose_slot(request, slot_id):
+
+    slot = get_object_or_404(TimeSlot, id=slot_id)
+
+
+    if slot.is_available:
+        slot.is_available = False
+        slot.user = request.user
+        slot.save()
+
+
+        return redirect('allo_aide:history')
+    else:
+
+        return redirect('allo_aide:home_user')
+
+# views.py
+
+@login_required
+def history(request):
+
+    user = request.user
+    taken_slots = TimeSlot.objects.filter(user=user, is_available=False)
+
+    return render(request, 'allo_aide/history.html', {'taken_slots': taken_slots})

@@ -4,7 +4,7 @@ Forms for handling Skill and TimeSlot model data in forms.
 """
 
 from django import forms
-from .models import Skill, TimeSlot
+from .models import Skill, TimeSlot, HelpRequest
 
 
 class SkillForm(forms.ModelForm):
@@ -32,3 +32,7 @@ class TimeSlotForm(forms.ModelForm):
     class Meta:
         model = TimeSlot
         fields = ['date', 'skill', 'user']
+class HelpRequestForm(forms.ModelForm):
+    class Meta:
+        model = HelpRequest
+        fields = ['skill', 'date', 'user','description']

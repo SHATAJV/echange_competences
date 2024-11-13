@@ -35,21 +35,23 @@
                 <a href="{% url 'allo_aide:create_new_skill' %}">Ajouter une activité</a>
         </section>
 
+<section id="demandes">
+    <h2>Vos Demandes d'aide</h2>
+    <p>Liste des demandes d'aide que vous avez envoyées.</p>
+    <ul>
+        {% for request in help_requests %}
+            <li>{{ request.date }} - {{ request.skill.name }} : {{ request.description }}
+                <a href="{% url 'allo_aide:find_slots' request.skill.id request.date %}">Trouver la bonne personne</a>
+            </li>
+        {% empty %}
+            <li>Vous n'avez pas encore envoyé de demandes d'aide.</li>
+        {% endfor %}
+    </ul>
+    <h4>Ajouter une nouvelle demande</h4>
+    <a href="{% url 'allo_aide:create_new_demande' %}">Ajouter une demande</a>
+</section>
 
-        <section id="demandes">
-            <h2>Vos Demandes d'aide</h2>
-            <p>Liste des demandes d'aide que vous avez envoyées.</p>
-            <ul>
-                {% for request in help_requests %}
-                    <li>{{ request.date }} - {{ request.skill.name }} : {{ request.description }}</li>
-                    <button>trouver le bon personne</button>
-                {% empty %}
-                    <li>Vous n'avez pas encore envoyé de demandes d'aide.</li>
-                {% endfor %}
-            </ul>
-             <h4>Ajouter une nouvelle demande</h4>
-                <a href="{% url 'allo_aide:create_new_demande' %}">Ajouter une demande</a>
-        </section>
+
 
         <section id="propositions">
     <h2>Vos Propositions d'aide</h2>
@@ -67,6 +69,8 @@
             <li>Vous n'avez pas encore ajouté de créneaux de disponibilité.</li>
         {% endfor %}
     </ul>
+        <h4>Ajouter une nouvelle proposition</h4>
+    <a href="{% url 'allo_aide:create_new_proposition' %}">Ajouter une proposition</a>
 </section>
 
         <section id="historique">

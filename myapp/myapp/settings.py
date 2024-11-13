@@ -55,9 +55,10 @@ ROOT_URLCONF = 'myapp.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / "templates"],
-
-        'APP_DIRS': True,
+        'DIRS': [
+            BASE_DIR / 'templates',  # Recherche dans le répertoire 'templates' global
+        ],
+        'APP_DIRS': True,  # Recherche dans le répertoire 'templates' de chaque app
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -68,6 +69,7 @@ TEMPLATES = [
         },
     },
 ]
+
 
 WSGI_APPLICATION = 'myapp.wsgi.application'
 

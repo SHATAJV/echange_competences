@@ -11,4 +11,8 @@ urlpatterns = [
     path('logout/', views.logout_view, name='logout'),
     path('create-new-skill/', views.create_new_skill, name='create_new_skill'),
     path('create-new-demande/', views.create_new_request, name='create_new_demande'),
+    path('create-new-proposition/', views.create_new_proposition, name='create_new_proposition'),
+    path('find-slots/<int:skill_id>/<str:date>/', views.find_slots, name='find_slots'),
+    path('choose-slot/<int:slot_id>/', views.choose_slot, name='choose_slot'),
+    path('history/', views.history, name='history'),
 ]
