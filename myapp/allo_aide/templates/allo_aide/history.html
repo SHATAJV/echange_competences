@@ -1,12 +1,9 @@
-<!-- history.html -->
 
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Historique de mes créneaux</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block title %}Historique de mes créneaux{% endblock %}
+
+{% block content %}
     <h2>Historique de mes créneaux pris</h2>
 
     <ul>
@@ -17,6 +14,5 @@
         {% endfor %}
     </ul>
 
-    <a href="{% url 'allo_aide:home_user' %}">Retour à l'accueil</a>
-</body>
-</html>
+
+{% endblock %}
