@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'allo_aide',
 ]
 
 MIDDLEWARE = [
@@ -54,8 +55,10 @@ ROOT_URLCONF = 'myapp.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
+        'DIRS': [
+            BASE_DIR / 'templates',  # Recherche dans le répertoire 'templates' global
+        ],
+        'APP_DIRS': True,  # Recherche dans le répertoire 'templates' de chaque app
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -66,6 +69,7 @@ TEMPLATES = [
         },
     },
 ]
+
 
 WSGI_APPLICATION = 'myapp.wsgi.application'
 
@@ -103,9 +107,8 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
-
-TIME_ZONE = 'UTC'
+LANGUAGE_CODE = 'fr-FR'
+TIME_ZONE = 'Europe/Paris'
 
 USE_I18N = True
 

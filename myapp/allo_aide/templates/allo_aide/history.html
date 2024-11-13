@@ -1,0 +1,18 @@
+
+{% extends "base.html" %}
+
+{% block title %}Historique de mes créneaux{% endblock %}
+
+{% block content %}
+    <h2>Historique de mes créneaux pris</h2>
+
+    <ul>
+        {% for slot in taken_slots %}
+            <li>{{ slot.skill.name }} - {{ slot.date }} (Pris par vous)</li>
+        {% empty %}
+            <p>Vous n'avez pas encore choisi de créneau.</p>
+        {% endfor %}
+    </ul>
+
+
+{% endblock %}
