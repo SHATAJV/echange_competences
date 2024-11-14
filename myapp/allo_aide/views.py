@@ -5,10 +5,6 @@ This module defines views for user login, logout, homepage rendering, user dashb
 and forms to create new skills and requests for time slots.
 """
 import datetime
-
-from django.http import HttpResponse
-from django.utils import timezone
-
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
@@ -16,7 +12,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 
 from .forms import SkillForm, TimeSlotForm, HelpRequestForm
 from .models import Skill, TimeSlot, HelpRequest
-from django.utils.timezone import make_aware
+
 
 def home(request):
     """
@@ -148,13 +144,13 @@ def find_slots(request, skill_id, date):
     error_message = None
 
     try:
-        # Parse the date string from URL
+
         date_obj = datetime.datetime.strptime(date, '%Y-%m-%d').date()
     except ValueError:
         error_message = 'Invalid date format. Please enter a date in YYYY-MM-DD format.'
         date_obj = None
 
-    # Filter for available time slots on the specified date
+
     if date_obj:
         available_slots = TimeSlot.objects.filter(skill=skill, date=date_obj, is_available=True)
     else:
