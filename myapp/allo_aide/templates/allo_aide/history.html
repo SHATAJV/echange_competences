@@ -7,7 +7,13 @@
 
     <ul>
         {% for slot in taken_slots %}
-            <li>{{ slot.skill.name }} - {{ slot.date }} (Pris par vous)</li>
+            <li>{{ slot.skill.name }} - {{ slot.date }} (Pris par {{ slot.user.username }})</li>
+            <li> proposé par: {{ slot.skill.user.username }} - Contact : {{ slot.skill.user.email }}</li>
+            <h4> pour Annuler ou dépalcer les rendez vous contactez par mail s'ilvous plait</h4>
+
+
+
+
         {% empty %}
             <p>Vous n'avez pas encore choisi de créneau.</p>
         {% endfor %}
