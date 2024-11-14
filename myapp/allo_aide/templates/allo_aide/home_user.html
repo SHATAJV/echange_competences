@@ -8,9 +8,9 @@
 </head>
 <body>
     <header>
-        <h3>Bienvenue, {{ user.username }}</h3>
-        <nav>
 
+        <nav>
+            <h3>Bienvenue, {{ user.username }}</h3>
             <ul>
                 <li><a href="#activites">Vos Activités</a></li>
                 <li><a href="#propositions">Vos Propositions d'aide</a></li>
@@ -29,15 +29,17 @@
     <ul>
         {% for skill in skills %}
             <li>{{ skill.name }}</li>
+
         {% empty %}
             <li>Vous n'avez pas encore ajouté de compétences.</li>
         {% endfor %}
     </ul>
-</section>
-        <section id="ajouter">
+            <section id="ajouter">
                 <h4>Ajouter une nouvelle activité</h4>
                 <a href="{% url 'allo_aide:create_new_skill' %}">Ajouter une activité</a>
         </section>
+</section>
+
 
 <section id="demandes">
     <h2>Vos Demandes d'aide</h2>
