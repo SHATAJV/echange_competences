@@ -72,7 +72,7 @@ class Reservation(models.Model):
     It allows to track which user reserved a specific slot without altering the original user.
     """
     time_slot = models.ForeignKey(TimeSlot, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)  # The user who reserves the slot
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     date_reserved = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

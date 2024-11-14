@@ -55,9 +55,7 @@
     <a href="{% url 'allo_aide:create_new_demande' %}">Ajouter une demande</a>
 </section>
 
-
-
-      <section id="propositions">
+        <section id="propositions">
     <h2>Vos Propositions d'aide</h2>
     <p>Liste des propositions d'aide que vous avez faites.</p>
 
@@ -80,7 +78,7 @@
             {% if not slot.is_available %}
                 <li>
                     {{ slot.date }} - {{ slot.skill.name }} - Indisponible<br>
-                     Réservé par: {{ reservation.user.username }} - Contact : {{ reservation.user.email }}
+                     Réservé par: {{ reservation.user.username }} (Contact : {{ reservation.user.email }})
                 </li>
             {% endif %}
         {% empty %}

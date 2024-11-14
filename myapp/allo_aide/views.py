@@ -183,7 +183,7 @@ def reserve_slot(request, slot_id):
         slot.save()
 
 
-        return redirect('allo_aide:home_user')
+        return redirect('allo_aide:history')
     else:
 
         return render(request, 'allo_aide/error.html', {'message': 'Ce créneau est déjà réservé.'})
@@ -192,7 +192,12 @@ def reserve_slot(request, slot_id):
 
 @login_required
 def history(request):
-    user = request.user
-    taken_slots = TimeSlot.objects.filter(user=user, is_available=False)
 
-    return render(request, 'allo_aide/history.html', {'taken_slots': taken_slots})
+    reservations = Reservation.objects.filter(user=request.user).select_related('time_slot', 'time_slot__skill')
+
+
+    context = {
+        'reservations': reservations,
+    }
+
+    return render(request, 'allo_aide/history.html', context)
