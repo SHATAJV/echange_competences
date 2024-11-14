@@ -11,7 +11,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render, redirect, get_object_or_404
 
 from .forms import SkillForm, TimeSlotForm, HelpRequestForm
-from .models import Skill, TimeSlot, HelpRequest
+from .models import Skill, TimeSlot, HelpRequest, Reservation
 
 
 def home(request):
@@ -162,22 +162,31 @@ def find_slots(request, skill_id, date):
         'date': date_obj,
         'error_message': error_message,
     })
+
+
 @login_required
-def choose_slot(request, slot_id):
+
+
+
+def reserve_slot(request, slot_id):
 
     slot = get_object_or_404(TimeSlot, id=slot_id)
 
 
     if slot.is_available:
+
+        reservation = Reservation(time_slot=slot, user=request.user)
+        reservation.save()
+
+
         slot.is_available = False
-        slot.user = request.user
         slot.save()
 
 
-        return redirect('allo_aide:history')
+        return redirect('allo_aide:home_user')
     else:
 
-        return redirect('allo_aide:home_user')
+        return render(request, 'allo_aide/error.html', {'message': 'Ce créneau est déjà réservé.'})
 
 # views.py
 

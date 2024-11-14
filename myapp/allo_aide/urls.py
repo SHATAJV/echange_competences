@@ -13,6 +13,6 @@ urlpatterns = [
     path('create-new-demande/', views.create_new_request, name='create_new_demande'),
     path('create-new-proposition/', views.create_new_proposition, name='create_new_proposition'),
     path('find-slots/<int:skill_id>/<str:date>/', views.find_slots, name='find_slots'),
-    path('choose-slot/<int:slot_id>/', views.choose_slot, name='choose_slot'),
+    path('reserve-slot/<int:slot_id>/', views.reserve_slot, name='reserve_slot'),
     path('history/', views.history, name='history'),
 ]
