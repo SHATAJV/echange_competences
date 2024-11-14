@@ -21,7 +21,7 @@
                         <li>{{ slot.date|date:"d/m/Y" }} - {{ slot.user.username }}</li>
                     <form action="{% url 'allo_aide:choose_slot' slot.id %}" method="post">
                     {% csrf_token %}
-                    <button type="submit">Request Slot</button>
+                    <button type="submit">demander aide</button>
                 </form>
 
                     {% endfor %}
