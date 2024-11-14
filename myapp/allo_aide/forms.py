@@ -32,7 +32,18 @@ class TimeSlotForm(forms.ModelForm):
     class Meta:
         model = TimeSlot
         fields = ['date', 'skill', 'user']
+
+
 class HelpRequestForm(forms.ModelForm):
+    """
+        A form for creating and updating helprequest instances.
+
+        Fields:
+            - date: The date of the time slot.
+            - skill: The skill associated with the time slot.
+            - user: The user who created the time slot.
+            -descripption
+        """
     class Meta:
         model = HelpRequest
         fields = ['skill', 'date', 'user','description']

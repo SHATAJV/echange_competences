@@ -10,11 +10,15 @@
     <header>
         <h3>Bienvenue, {{ user.username }}</h3>
         <nav>
-            <a href="#activites">Vos Activités</a>
-            <a href="#propositions">Vos Propositions d'aide</a>
-            <a href="#historique">Votre Historique</a>
-            <a href="#demandes">Vos Demandes d'aide</a>
-            <a href="{% url 'allo_aide:logout' %}">Déconnexion</a>
+
+            <ul>
+                <li><a href="#activites">Vos Activités</a></li>
+                <li><a href="#propositions">Vos Propositions d'aide</a></li>
+                <li> <a href="#historique">Votre Historique</a></li>
+                <li><a href="#demandes">Vos Demandes d'aide</a></a></li>
+                <li><a href="{% url 'allo_aide:logout' %}">Déconnexion</a></li>
+
+            </ul>
         </nav>
     </header>
 
