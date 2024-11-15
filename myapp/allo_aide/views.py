@@ -21,6 +21,7 @@ Functions:
 """
 
 import datetime
+
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
@@ -43,8 +44,6 @@ def home(request):
     return render(request, 'allo_aide/home.html', {'skills': skills, 'timeslots': timeslots})
 
 
-from django.utils import timezone
-
 def home_user(request):
     user = request.user
     skills = Skill.objects.filter(user=user)
@@ -57,6 +56,8 @@ def home_user(request):
         'time_slots': time_slots,
     }
     return render(request, 'allo_aide/home_user.html', context)
+
+
 def login_view(request):
     """
     View to handle user login.
@@ -166,7 +167,6 @@ def find_slots(request, skill_id, date):
         error_message = 'Invalid date format. Please enter a date in YYYY-MM-DD format.'
         date_obj = None
 
-
     if date_obj:
         available_slots = TimeSlot.objects.filter(skill=skill, date=date_obj, is_available=True)
     else:
@@ -184,7 +184,6 @@ def find_slots(request, skill_id, date):
 def reserve_slot(request, slot_id):
 
     slot = get_object_or_404(TimeSlot, id=slot_id)
-
 
     if slot.is_available:
 
@@ -206,7 +205,6 @@ def reserve_slot(request, slot_id):
 def history(request):
 
     reservations = Reservation.objects.filter(user=request.user).select_related('time_slot', 'time_slot__skill')
-
 
     context = {
         'reservations': reservations,
