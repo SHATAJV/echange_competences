@@ -5,7 +5,7 @@ import pytest
 from django.contrib.auth.models import User
 from django.utils import timezone
 from unittest.mock import Mock
-from .models import Skill, TimeSlot, HelpRequest
+from .models import Skill, TimeSlot, HelpRequest, Reservation
 
 
 @pytest.mark.django_db
@@ -144,3 +144,32 @@ class TestHelpRequestModel:
         assert help_request.description == description
         assert str(help_request) == f"{user.username} needs help with {mock_skill} on {date}"
 """
+
+@pytest.mark.django_db
+def test_reservation_creation():
+
+    user_1 = User.objects.create_user(username="user1", password="testpassword123")
+    user_2 = User.objects.create_user(username="user2", password="testpassword456")
+
+
+    skill = Skill.objects.create(name="Python", user=user_1)
+
+
+    time_slot = TimeSlot.objects.create(
+        date=date.today(),
+        skill=skill,
+        user=user_1,
+        is_available=True
+    )
+
+
+    reservation = Reservation.objects.create(
+        time_slot=time_slot,
+        user=user_2
+    )
+
+
+    assert reservation.time_slot == time_slot
+    assert reservation.user == user_2
+    assert reservation.time_slot.skill.name == "Python"
+    assert str(reservation) == f"user2 reserved Python on {time_slot.date}"
