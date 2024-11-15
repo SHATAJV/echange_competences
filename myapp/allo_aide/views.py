@@ -1,9 +1,38 @@
 """
-Views for managing user authentication, homepage display, and skill/time slot creation.
+Views for user authentication, homepage display, skill/time slot creation,
+and reservation management.
 
-This module defines views for user login, logout, homepage rendering, user dashboard,
-and forms to create new skills and requests for time slots.
+This module defines views to manage user login and logout, render both the
+general homepage and user-specific dashboard, and enable functionality
+such as creating new skills, time slots, and handling reservations.
+
+Functions:
+----------
+- `home(request)`: Displays the public homepage with all available skills and time slots.
+- `home_user(request)`: Renders the user's dashboard, showing their skills, help requests, and time slots.
+- `login_view(request)`: Handles user login, displaying a login form and authenticating credentials.
+- `logout_view(request)`: Logs the user out and redirects to the public homepage.
+- `create_new_skill(request)`: Allows users to create and save a new skill using `SkillForm`.
+- `create_new_request(request)`: Enables users to submit requests for help using `HelpRequestForm`.
+- `create_new_proposition(request)`: Lets users propose a new time slot using `TimeSlotForm`.
+- `find_slots(request, skill_id, date)`: Retrieves available time slots for a given skill on a specified date.
+- `reserve_slot(request, slot_id)`: Reserves a time slot for the logged-in user if it is available.
+- `history(request)`: Displays a user's reservation history with associated time slots and skills.
+
+Dependencies:
+-------------
+- `datetime`: For date parsing and validation.
+- Django utilities such as `authenticate`, `login`, `logout`, `redirect`,
+  `get_object_or_404`, and decorators like `login_required`.
+- Models: `Skill`, `TimeSlot`, `HelpRequest`, `Reservation`.
+- Forms: `SkillForm`, `TimeSlotForm`, `HelpRequestForm`.
+
+Notes:
+------
+All views that modify user data or require user-specific context are protected
+using the `@login_required` decorator to ensure authentication.
 """
+
 import datetime
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
