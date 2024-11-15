@@ -1,0 +1,27 @@
+
+{% extends "base.html" %}
+
+
+{% block content %}
+   <section id="historique">
+            <h2>Historique de vos réservations</h2>
+            <p>Voici la liste des créneaux que vous avez réservés :</p>
+
+            <ul>
+                {% for reservation in reservations %}
+                    <li>
+                        <strong>{{ reservation.time_slot.date }} - {{ reservation.time_slot.skill.name }}</strong>
+                        <br>
+                        Proposé par : {{ reservation.time_slot.user.username }} (Contact : {{ reservation.time_slot.user.email }})
+                        <br>
+                        Réservé par vous : {{ reservation.user.username }} (Contact : {{ reservation.user.email }})
+                        <br>
+                        Pour dépelacer ou annuler contactez par mail s'il vous plaît
+                    </li>
+                {% empty %}
+                    <li>Vous n'avez pas encore réservé de créneaux.</li>
+                {% endfor %}
+            </ul>
+        </section>
+
+{% endblock %}

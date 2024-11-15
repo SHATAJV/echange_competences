@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Mon Site - Allô Aide{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'allo_aide/style.css' %}">
+</head>
+<body>
+    <!-- En-tête du site avec la navigation -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'allo_aide:home' %}">Accueil</a></li>
+                <li><a href="{% url 'allo_aide:home_user' %}">Tableau de bord</a></li>
+                <li><a href="{% url 'allo_aide:login' %}">Connexion</a></li>
+                <li><a href="{% url 'allo_aide:logout' %}">Déconnexion</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Contenu principal de la page -->
+    <main>
+        {% block content %}
+        <!-- Le contenu spécifique de chaque page sera inséré ici -->
+        {% endblock %}
+    </main>
+
+    <!-- Pied de page -->
+    <footer>
+        <p>&copy; 2024 Allô Aide - Échange de Compétences</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Allô Aide - Échange de Compétences</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'allo_aide/style.css' %}">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <h3>ALLô_aide</h3>
+            <nav>
+                <ul>
+                    <li><a href="#services">Nos services</a></li>
+                    <li><a href="#actualites">Nos Actualités</a></li>
+                    <li><a href="#profiter">Comment je peux profiter ?</a></li>
+                    <li><a href="{% url 'allo_aide:login' %}">Connexion</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Section Nos services -->
+        <section id="activites">
+            <h2>Nos services</h2>
+            <p>Découvrez les services proposés par ALLô_aide pour échanger vos compétences.</p>
+            <ul>
+                {% for skill in skills %}
+                    <li>{{ skill.name }}</li>
+                {% empty %}
+                    <li>Aucun service n'est disponible pour le moment.</li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <!-- Section Nos Actualités -->
+        <section id="demandes">
+            <h2>Nos Actualités</h2>
+            <p>Les dernières nouvelles et informations sur notre application.</p>
+            <ul>
+                {% for slot in timeslots %}
+                    <li>{{ slot.date }} - {{ slot.skill.name }} - Disponible</li>
+                {% empty %}
+                    <li>Aucune actualité disponible pour le moment.</li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <!-- Section Comment je peux profiter -->
+        <section id="profiter">
+            <h2>Comment je peux profiter ?</h2>
+            <p>Apprenez à utiliser l'application et tirez le meilleur parti de nos services.</p>
+        </section>
+
+        <!-- Section Informations supplémentaires -->
+        <section id="informations">
+            <h3>Plus d'informations</h3>
+            <p>Des informations détaillées sur nos services et comment s'inscrire.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Allô Aide - Échange de Compétences</p>
+    </footer>
+</body>
+</html>

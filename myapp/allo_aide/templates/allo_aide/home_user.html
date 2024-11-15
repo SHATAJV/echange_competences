@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>ALLô_aide - Tableau de bord</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'allo_aide/style.css' %}">
+</head>
+<body>
+    <header>
+
+        <nav>
+            <h3>Bienvenue, {{ user.username }}</h3>
+            <ul>
+                <li><a href="#activites">Vos Activités</a></li>
+                <li><a href="#propositions">Vos Propositions d'aide</a></li>
+                <li> <a href="#historique">Votre Historique</a></li>
+                <li><a href="#demandes">Vos Demandes d'aide</a></a></li>
+                <li><a href="{% url 'allo_aide:logout' %}">Déconnexion</a></li>
+
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+       <section id="activites">
+    <h2>Vos Activités</h2>
+    <p>Liste de vos activités et interactions avec d'autres utilisateurs.</p>
+    <ul>
+        {% for skill in skills %}
+            <li>{{ skill.name }}</li>
+
+        {% empty %}
+            <li>Vous n'avez pas encore ajouté de compétences.</li>
+        {% endfor %}
+    </ul>
+            <section id="ajouter">
+                <h4>Ajouter une nouvelle activité</h4>
+                <a href="{% url 'allo_aide:create_new_skill' %}">Ajouter une activité</a>
+        </section>
+</section>
+
+
+<section id="demandes">
+    <h2>Vos Demandes d'aide</h2>
+    <p>Liste des demandes d'aide que vous avez envoyées.</p>
+    <ul>
+        {% for request in help_requests %}
+            <li>{{ request.date }} - {{ request.skill.name }} : {{ request.description }}
+                <a href="{% url 'allo_aide:find_slots' request.skill.id request.date %}">Trouver la bonne personne</a>
+            </li>
+        {% empty %}
+            <li>Vous n'avez pas encore envoyé de demandes d'aide.</li>
+        {% endfor %}
+    </ul>
+    <h4>Ajouter une nouvelle demande</h4>
+    <a href="{% url 'allo_aide:create_new_demande' %}">Ajouter une demande</a>
+</section>
+
+        <section id="propositions">
+    <h2>Vos Propositions d'aide</h2>
+    <p>Liste des propositions d'aide que vous avez faites.</p>
+
+
+    <h3>Créneaux Disponibles</h3>
+    <p>Voici les créneaux que vous avez proposés et qui sont encore disponibles :</p>
+    <ul>
+        {% for slot in time_slots %}
+            {% if slot.is_available %}
+                <li>{{ slot.date }} - {{ slot.skill.name }} - Disponible</li>
+            {% endif %}
+        {% empty %}
+            <li>Aucun créneau disponible pour l'instant.</li>
+        {% endfor %}
+    </ul>
+    <h3>Créneaux Indisponibles (Réservés)</h3>
+    <p>Voici les créneaux que vous avez proposés et qui ont été réservés par d'autres utilisateurs :</p>
+    <ul>
+        {% for slot in time_slots %}
+            {% if not slot.is_available %}
+                <li>
+                    {{ slot.date }} - {{ slot.skill.name }} - Indisponible<br>
+                     Réservé par: {{ reservation.user.username }} (Contact : {{ reservation.user.email }})
+                </li>
+            {% endif %}
+        {% empty %}
+            <li>Aucun créneau réservé par un autre utilisateur pour l'instant.</li>
+        {% endfor %}
+    </ul>
+
+    <h4>Ajouter une nouvelle proposition</h4>
+    <a href="{% url 'allo_aide:create_new_proposition' %}">Ajouter une proposition</a>
+</section>
+
+
+
+       <section id="historique">
+    <h2>Votre Historique</h2>
+    <p>Consultation de l'historique de vos activités passées.</p>
+    <form action="{% url 'allo_aide:history' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Voir statut</button>
+    </form>
+</section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Allô Aide - Échange de Compétences</p>
+    </footer>
+</body>
+</html>
