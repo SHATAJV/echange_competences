@@ -8,9 +8,9 @@
 </head>
 <body>
     <header>
-        <h3>Bienvenue, {{ user.username }}</h3>
-        <nav>
 
+        <nav>
+            <h3>Bienvenue, {{ user.username }}</h3>
             <ul>
                 <li><a href="#activites">Vos Activités</a></li>
                 <li><a href="#propositions">Vos Propositions d'aide</a></li>
@@ -29,15 +29,17 @@
     <ul>
         {% for skill in skills %}
             <li>{{ skill.name }}</li>
+
         {% empty %}
             <li>Vous n'avez pas encore ajouté de compétences.</li>
         {% endfor %}
     </ul>
-</section>
-        <section id="ajouter">
+            <section id="ajouter">
                 <h4>Ajouter une nouvelle activité</h4>
                 <a href="{% url 'allo_aide:create_new_skill' %}">Ajouter une activité</a>
         </section>
+</section>
+
 
 <section id="demandes">
     <h2>Vos Demandes d'aide</h2>
@@ -55,27 +57,42 @@
     <a href="{% url 'allo_aide:create_new_demande' %}">Ajouter une demande</a>
 </section>
 
-
-
         <section id="propositions">
     <h2>Vos Propositions d'aide</h2>
     <p>Liste des propositions d'aide que vous avez faites.</p>
+
+
+    <h3>Créneaux Disponibles</h3>
+    <p>Voici les créneaux que vous avez proposés et qui sont encore disponibles :</p>
     <ul>
         {% for slot in time_slots %}
-            <li>{{ slot.date }} - {{ slot.skill.name }} -
-                {% if slot.is_available %}
-                    Disponible
-                {% else %}
-                    Indisponible
-                {% endif %}
-            </li>
+            {% if slot.is_available %}
+                <li>{{ slot.date }} - {{ slot.skill.name }} - Disponible</li>
+            {% endif %}
         {% empty %}
-            <li>Vous n'avez pas encore ajouté de créneaux de disponibilité.</li>
+            <li>Aucun créneau disponible pour l'instant.</li>
         {% endfor %}
     </ul>
-        <h4>Ajouter une nouvelle proposition</h4>
+    <h3>Créneaux Indisponibles (Réservés)</h3>
+    <p>Voici les créneaux que vous avez proposés et qui ont été réservés par d'autres utilisateurs :</p>
+    <ul>
+        {% for slot in time_slots %}
+            {% if not slot.is_available %}
+                <li>
+                    {{ slot.date }} - {{ slot.skill.name }} - Indisponible<br>
+                     Réservé par: {{ reservation.user.username }} (Contact : {{ reservation.user.email }})
+                </li>
+            {% endif %}
+        {% empty %}
+            <li>Aucun créneau réservé par un autre utilisateur pour l'instant.</li>
+        {% endfor %}
+    </ul>
+
+    <h4>Ajouter une nouvelle proposition</h4>
     <a href="{% url 'allo_aide:create_new_proposition' %}">Ajouter une proposition</a>
 </section>
+
+
 
        <section id="historique">
     <h2>Votre Historique</h2>

@@ -26,7 +26,7 @@
                 <ul>
                     {% for slot in available_slots %}
                         <li>{{ slot.date|date:"d/m/Y" }} - {{ slot.user.username }} - contact: {{ slot.user.email }}</li>
-                    <form action="{% url 'allo_aide:choose_slot' slot.id %}" method="post">
+                    <form action="{% url 'allo_aide:reserve_slot' slot.id %}" method="post">
                     {% csrf_token %}
                     <button type="submit">demander aide</button>
                 </form>

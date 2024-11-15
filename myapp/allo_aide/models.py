@@ -64,3 +64,16 @@ class HelpRequest(models.Model):
 
     def __str__(self):
         return f"{self.user.username} needs help with {self.skill} on {self.date}"
+
+
+class Reservation(models.Model):
+    """
+    Model representing a reservation of a time slot by a user.
+    It allows to track which user reserved a specific slot without altering the original user.
+    """
+    time_slot = models.ForeignKey(TimeSlot, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    date_reserved = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.user.username} reserved {self.time_slot.skill.name} on {self.time_slot.date}"

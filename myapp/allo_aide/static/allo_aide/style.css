@@ -1,12 +1,13 @@
+/* Général */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f5f5f5;
+    background-color: #f4f4f9;
 }
 
 header {
-    background-color: black;
+    background-color: #2d3e50;
     padding: 20px;
     color: white;
     text-align: center;
@@ -18,9 +19,10 @@ header {
     align-items: center;
 }
 
-header h1 {
+header h3 {
     margin: 0;
-    font-size: 2.5em;
+    font-size: 1.8em;
+    color: #f5a623;
 }
 
 nav ul {
@@ -28,8 +30,9 @@ nav ul {
     padding: 0;
     margin: 10px 0 0 0;
     display: flex;
+    justify-content: center;
     gap: 20px;
-    color: white
+    color: white;
 }
 
 nav ul li {
@@ -46,20 +49,163 @@ nav ul li a:hover {
     text-decoration: underline;
 }
 
-/* Style du main et footer */
-main {
-    padding: 20px;
-    background-color: white;
-    max-width: 800px;
-    margin: 20px auto;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+/* Section Activités */
+#activites {
+    background-color: #fff;
+    padding: 30px;
+    margin: 20px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
 }
 
+#activites h2 {
+    color: #2d3e50;
+}
+
+#activites ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#activites ul li {
+    background-color: #f9f9f9;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#activites ul li:hover {
+    background-color: #f1f1f1;
+}
+#demandes {
+    background-color: #fff;
+    padding: 30px;
+    margin: 20px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+/* Section Propositions d'aide */
+#propositions {
+    background-color: #fff;
+    padding: 30px;
+    margin: 20px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+#propositions h2 {
+    color: #2d3e50;
+}
+
+#propositions h3 {
+    color: #3b3b3b;
+}
+
+#propositions ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#propositions ul li {
+    background-color: #f9f9f9;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#propositions ul li:hover {
+    background-color: #f1f1f1;
+}
+
+/* Section Historique */
+#historique {
+    background-color: #fff;
+    padding: 30px;
+    margin: 20px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+#historique h2 {
+    color: #2d3e50;
+}
+
+#historique form {
+    margin-top: 20px;
+}
+
+#historique button {
+    background-color: #f5a623;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+#historique
+
+/* Section Demandes d'aide */
+#demandes {
+    background-color: #fff;
+    padding: 30px;
+    margin: 20px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+#demandes h2 {
+    color: #2d3e50;
+}
+
+#demandes ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#demandes ul li {
+    background-color: #f9f9f9;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#demandes ul li a {
+    color: #f5a623;
+    text-decoration: none;
+}
+
+#demandes ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Footer */
 footer {
     text-align: center;
     padding: 10px;
-    background-color: black;
+    background-color: #2d3e50;
     color: white;
     bottom: 0;
     width: 100%;
+    font-size: 0.9em;
+}
+button{
+background-color: #f5a623;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+
+
+}
+button:hover {
+    background-color: #d88e19;
 }
