@@ -18,19 +18,6 @@ Functions:
 - `find_slots(request, skill_id, date)`: Retrieves available time slots for a given skill on a specified date.
 - `reserve_slot(request, slot_id)`: Reserves a time slot for the logged-in user if it is available.
 - `history(request)`: Displays a user's reservation history with associated time slots and skills.
-
-Dependencies:
--------------
-- `datetime`: For date parsing and validation.
-- Django utilities such as `authenticate`, `login`, `logout`, `redirect`,
-  `get_object_or_404`, and decorators like `login_required`.
-- Models: `Skill`, `TimeSlot`, `HelpRequest`, `Reservation`.
-- Forms: `SkillForm`, `TimeSlotForm`, `HelpRequestForm`.
-
-Notes:
-------
-All views that modify user data or require user-specific context are protected
-using the `@login_required` decorator to ensure authentication.
 """
 
 import datetime
@@ -194,9 +181,6 @@ def find_slots(request, skill_id, date):
 
 
 @login_required
-
-
-
 def reserve_slot(request, slot_id):
 
     slot = get_object_or_404(TimeSlot, id=slot_id)
@@ -207,10 +191,8 @@ def reserve_slot(request, slot_id):
         reservation = Reservation(time_slot=slot, user=request.user)
         reservation.save()
 
-
         slot.is_available = False
         slot.save()
-
 
         return redirect('allo_aide:history')
     else:
@@ -218,6 +200,7 @@ def reserve_slot(request, slot_id):
         return render(request, 'allo_aide/error.html', {'message': 'Ce créneau est déjà réservé.'})
 
 # views.py
+
 
 @login_required
 def history(request):
