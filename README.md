@@ -19,13 +19,8 @@ Ce projet est une application Web permettant l'échange de compétences entre ut
 
 ## Installation
 
-Utilisateur :
-   ```bash
-   admin_shahrzad  password: Sh1373taj
-  Technomax  password: TecTec1234
-ClaireJardin password: SHSHSHSH1234
-Tomsport: Tststs12345
-
-
-
-
+Utilisateurs :
+- admin_shahrzad  password: Sh1373taj
+- TechnoMax  password: TecTec1234
+- ClaireJardin password: SHSHSHSH1234
+- Tomsport: Tststs12345
