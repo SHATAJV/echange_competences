@@ -3,6 +3,7 @@ from django.test import TestCase
 
 import pytest
 from django.contrib.auth.models import User
+from django.urls import reverse
 from django.utils import timezone
 from unittest.mock import Mock
 from .models import Skill, TimeSlot, HelpRequest, Reservation
@@ -151,9 +152,7 @@ def test_reservation_creation():
     user_1 = User.objects.create_user(username="user1", password="testpassword123")
     user_2 = User.objects.create_user(username="user2", password="testpassword456")
 
-
     skill = Skill.objects.create(name="Python", user=user_1)
-
 
     time_slot = TimeSlot.objects.create(
         date=date.today(),
@@ -162,14 +161,26 @@ def test_reservation_creation():
         is_available=True
     )
 
-
     reservation = Reservation.objects.create(
         time_slot=time_slot,
         user=user_2
     )
 
-
     assert reservation.time_slot == time_slot
     assert reservation.user == user_2
     assert reservation.time_slot.skill.name == "Python"
     assert str(reservation) == f"user2 reserved Python on {time_slot.date}"
+
+
+@pytest.mark.django_db
+def test_home_view(client):
+    """
+    Test the home view to ensure it retrieves and displays available skills and time slots.
+    """
+    user = User.objects.create_user(username='testuser', password='password123')
+    skill = Skill.objects.create(name='Python', user=user)
+    TimeSlot.objects.create(date='2024-11-16', skill=skill, user=user, is_available=True)
+    response = client.get(reverse('allo_aide:home'))
+    assert response.status_code == 200
+    assert 'Python' in response.content.decode()
+
